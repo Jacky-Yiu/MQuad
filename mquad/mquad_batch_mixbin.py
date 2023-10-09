@@ -183,12 +183,15 @@ class MquadSparseMixBin():
             if tenx_cutoff is None:
                 x, y, knee, cutoff = findKnee(self.df.deltaBIC)
                 
-                plt.plot(x, y)
-                plt.axvline(x=knee, color="black", linestyle='--',label="cutoff")
-                plt.legend()
-                plt.ylabel("\u0394BIC")
-                plt.xlabel("Cumulative probability")
-                plt.savefig(out_dir + '/deltaBIC_cdf.pdf')
+                try:
+                    plt.plot(x, y)
+                    plt.axvline(x=knee, color="black", linestyle='--',label="cutoff")
+                    plt.legend()
+                    plt.ylabel("\u0394BIC")
+                    plt.xlabel("Cumulative probability")
+                    plt.savefig(out_dir + '/deltaBIC_cdf.pdf')
+                except:
+                    print("cannot print deltaBIC_cdf.pdf")
 
                 #make a PASS/FAIL column in self.df for easier subsetting
                 print('deltaBIC cutoff = ', cutoff)
