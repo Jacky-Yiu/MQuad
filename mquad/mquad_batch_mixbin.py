@@ -191,7 +191,11 @@ class MquadSparseMixBin():
                     plt.xlabel("Cumulative probability")
                     plt.savefig(out_dir + '/deltaBIC_cdf.pdf')
                 except:
-                    print("cannot print deltaBIC_cdf.pdf")
+                    plt.plot(x, y)
+                    plt.legend()
+                    plt.ylabel("\u0394BIC")
+                    plt.xlabel("Cumulative probability")
+                    plt.savefig(out_dir + '/deltaBIC_cdf.pdf')
 
                 #make a PASS/FAIL column in self.df for easier subsetting
                 print('deltaBIC cutoff = ', cutoff)
